@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bus translation</title>
+    </head>
+    <body style="text-align: center">
+        <p>
+            <button id="btn">Translate</button>
+        </p>
+        <textarea id="response" cols="20" rows="10"></textarea>
+
+        <script>
+            var el = document.getElementById("btn");
+            el.addEventListener("click", translateResponse, false);
+
+            function translateResponse() {
+                var response = document.getElementById("response");
+                var data = JSON.parse(response.value);
+                var time = data.result[0].RealTimeResults[0];
+
+                var hour = Math.floor(time.RealTime / 3600);
+                var minute = Math.floor((time.RealTime - (hour*3600)) / 60);
+
+                var eHour = Math.floor(time.ETime / 3600);
+                var eMinute = Math.floor((time.ETime - (hour*3600)) / 60);
+
+                alert(`Realtime: ${hour}:${minute} Estimated time: ${eHour}:${eMinute}`);
+            }
+        </script>
+    </body>
+</html>
+
