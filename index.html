@@ -5,9 +5,9 @@
     </head>
     <body style="text-align: center">
         <p>
-            <button id="btn">Translate</button>
+            <button id="btn" style="width:100%">Translate</button>
         </p>
-        <textarea id="response" cols="20" rows="10"></textarea>
+        <textarea id="response" style="width:100%" rows="10"></textarea>
 
         <script>
             var el = document.getElementById("btn");
@@ -24,7 +24,9 @@
                 var eHour = Math.floor(time.ETime / 3600);
                 var eMinute = Math.floor((time.ETime - (hour*3600)) / 60);
 
-                alert(`Realtime: ${hour}:${minute} Estimated time: ${eHour}:${eMinute}`);
+                var result = confirm(`Realtime: ${hour}:${minute} Estimated time: ${eHour}:${eMinute}`);
+
+                if (result) { response.value = ''; }
             }
         </script>
     </body>
